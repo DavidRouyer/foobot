@@ -129,12 +129,12 @@ call :SelectNodeVersion
 :: )
 
 IF EXIST "%DEPLOYMENT_TARGET%\dist" (
-  echo start npm install --only=production
+  echo start npm install --production
   pushd "%DEPLOYMENT_TARGET%\dist"
-    call :ExecuteCmd !NPM_CMD! install --only=production
+    call :ExecuteCmd !NPM_CMD! install --production
     IF !ERRORLEVEL! NEQ 0 goto error
   popd
-  echo end npm install --only=production
+  echo end npm install --production
 )
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
