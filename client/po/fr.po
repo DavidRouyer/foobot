@@ -1,0 +1,123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: client/app/account/signup/signup.html:17
+msgid "A name is required"
+msgstr "Un nom est requis"
+
+#: client/app/devices/devices.html:25 client/app/devices/devices.html:38
+msgid "Carbon dioxide"
+msgstr "Dioxyde de carbone"
+
+#: client/app/account/signup/signup.html:29
+msgid "Doesn't look like a valid email."
+msgstr "Ne ressemble pas à une adresse e-mail valide."
+
+#: client/app/account/login/login.html:12
+#: client/app/account/signup/signup.html:24
+msgid "Email"
+msgstr "Adresse e-mail"
+
+#: client/app/main/main.html:12
+msgid "Foobot dashboard"
+msgstr "Tableau de bord Foobot"
+
+#: client/app/main/main.html:6
+msgid ""
+"Foobot is a smart device designed to help you take control of your indoor "
+"air quality."
+msgstr ""
+"Foobot est un appareil connecté conçu pour vous aider à prendre le contrôle "
+"sur la qualité de votre air d'intérieur."
+
+#: client/components/navbar/navbar.html:23
+msgid "Hello {{ getCurrentUser().name }}"
+msgstr "Bonjour {{ getCurrentUser().name }}"
+
+#: client/components/navbar/navbar.controller.js:6
+msgid "Home"
+msgstr "Accueil"
+
+#: client/app/devices/devices.html:17 client/app/devices/devices.html:42
+msgid "Humidity"
+msgstr "Humidité"
+
+#: client/app/devices/devices.html:6
+msgid "Last updated {{ time }}"
+msgstr "Dernière mise à jour {{ time }}"
+
+#: client/app/account/login/login.html:35 client/app/account/login/login.html:6
+#: client/app/account/signup/signup.html:61
+#: client/components/navbar/navbar.html:22
+msgid "Login"
+msgstr "Connexion"
+
+#: client/components/navbar/navbar.html:25
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: client/app/account/signup/signup.html:13
+msgid "Name"
+msgstr "Nom"
+
+#: client/app/devices/devices.html:21
+msgid "Particulate matter"
+msgstr "Particules fines"
+
+#: client/app/account/login/login.html:18
+#: client/app/account/signup/signup.html:42
+msgid "Password"
+msgstr "Mot de passe"
+
+#: client/app/account/signup/signup.html:48
+msgid "Password must be at least 3 characters."
+msgstr "Le mot de passe doit comporter au moins 3 caractères."
+
+#: client/app/account/login/login.html:27
+msgid "Please enter a valid email."
+msgstr "Veuillez saisir une adresse e-mail valide."
+
+#: client/app/account/login/login.html:24
+msgid "Please enter your email and password."
+msgstr "Veuillez saisir une adresse e-mail et un mot de passe."
+
+#: client/app/devices/devices.html:50 client/app/devices/devices.html:9
+msgid "Pollution level"
+msgstr "Niveau de pollution"
+
+#: client/app/account/login/login.html:38
+msgid "Register"
+msgstr "S'inscrire"
+
+#: client/app/account/signup/signup.html:58
+#: client/app/account/signup/signup.html:6
+#: client/components/navbar/navbar.html:21
+msgid "Sign up"
+msgstr "Inscription"
+
+#: client/app/devices/devices.html:13 client/app/devices/devices.html:34
+msgid "Temperature"
+msgstr "Température"
+
+#: client/components/navbar/navbar.html:5
+msgid "Toggle navigation"
+msgstr "Activer la navigation"
+
+#: client/app/devices/devices.html:29 client/app/devices/devices.html:46
+msgid "Volatile Organic Compound"
+msgstr "Composé Organique Volatile"
+
+#: client/app/account/signup/signup.html:32
+msgid "What's your email address?"
+msgstr "Quelle est votre adresse email ?"

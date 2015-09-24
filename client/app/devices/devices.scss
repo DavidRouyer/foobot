@@ -1,0 +1,47 @@
+#allpollu {
+  display: block;
+  margin: 0 auto;
+}
+
+.axis .domain {
+  display: none;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #CCC;
+  shape-rendering: crispEdges;
+}
+
+temperature, carbon, humidity, voc, total {
+  display: block;
+  position: relative;
+}
+
+.graph-tooltip {
+  position: absolute;
+  z-index: 20;
+  visibility: hidden;
+  display: inline-block;
+  padding: 5px 0px;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .tooltip-arrow {
+    bottom: 0px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px 5px 0px;
+    border-top-color: #000;
+  }
+}
+
+.vertical-bar {
+  position: absolute;
+  z-index: 19;
+  width: 1px;
+  background: #fff;
+}

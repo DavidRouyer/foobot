@@ -1,0 +1,53 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+
+  <div class="pull-right">
+    <div translate>Last updated {{ time }}</div>
+  </div>
+
+  <h2 style="text-align: center" translate>Pollution level</h2>
+  <svg id="allpollu" gauge data="allpollu.value"></svg>
+
+  <div class="col-sm-6">
+    <h2 translate>Temperature</h2>
+    <div>{{ tmp.value }} °C</div>
+  </div>
+  <div class="col-sm-6">
+    <h2 translate>Humidity</h2>
+    <div>{{ hum.value }} <span>%</span></div>
+  </div>
+  <div class="col-sm-6">
+    <h2 translate>Particulate matter</h2>
+    <div>{{ pm.value }} ug/m<sup>3</sup></div>
+  </div>
+  <div class="col-sm-6">
+    <h2 translate>Carbon dioxide</h2>
+    <div>{{ co2.value }} <span>{{ co2.unit }}</span></div>
+  </div>
+  <div class="col-sm-6">
+    <h2 translate>Volatile Organic Compound</h2>
+    <div>{{ voc.value }} <span>{{ voc.unit }}</span></div>
+  </div>
+
+  <div class="col-sm-12">
+    <h2 translate>Temperature</h2>
+    <temperature data="graphData"></temperature>
+  </div>
+  <div class="col-sm-12">
+    <h2 translate>Carbon dioxide</h2>
+    <carbon data="graphData"></carbon>
+  </div>
+  <div class="col-sm-12">
+    <h2 translate>Humidity</h2>
+    <humidity data="graphData"></humidity>
+  </div>
+  <div class="col-sm-12">
+    <h2 translate>Volatile Organic Compound</h2>
+    <voc data="graphData"></voc>
+  </div>
+  <div class="col-sm-12">
+    <h2 translate>Pollution level</h2>
+    <total data="graphData"></total>
+  </div>
+</div>
