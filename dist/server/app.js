@@ -35,7 +35,7 @@ app.use('/api', function(req, res) {
 });
 
 app.all('/*', function(req, res, next) {
-    res.sendFile('index.html', { root: path.join(config.root, 'public') });
+    res.sendFile('index.html', { root: path.join(config.root, 'client') });
 });
 
 app.listen(config.port, config.ip, function () {
