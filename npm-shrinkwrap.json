@@ -2629,9 +2629,9 @@
       "resolved": "https://registry.npmjs.org/jasmine/-/jasmine-2.3.2.tgz",
       "dependencies": {
         "glob": {
-          "version": "3.2.11",
-          "from": "glob@>=3.2.11 <4.0.0",
-          "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz"
+          "version": "5.0.15",
+          "from": "glob@>=5.0.3 <6.0.0",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz"
         },
         "minimatch": {
           "version": "0.3.0",
@@ -4042,9 +4042,9 @@
           "resolved": "https://registry.npmjs.org/bl/-/bl-0.9.4.tgz"
         },
         "glob": {
-          "version": "3.2.11",
-          "from": "glob@>=3.2.0 <3.3.0",
-          "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz"
+          "version": "5.0.15",
+          "from": "glob@>=5.0.3 <6.0.0",
+          "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz"
         },
         "lodash": {
           "version": "2.4.2",
