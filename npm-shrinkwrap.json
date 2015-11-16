@@ -1931,14 +1931,14 @@
       "resolved": "https://registry.npmjs.org/gifsicle/-/gifsicle-3.0.3.tgz"
     },
     "glob": {
-      "version": "3.1.21",
-      "from": "glob@>=3.1.21 <3.2.0",
-      "resolved": "https://registry.npmjs.org/glob/-/glob-3.1.21.tgz",
+      "version": "5.0.15",
+      "from": "glob@>=5.0.3 <6.0.0",
+      "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz",
       "dependencies": {
         "inherits": {
-          "version": "1.0.2",
-          "from": "inherits@>=1.0.0 <2.0.0",
-          "resolved": "https://registry.npmjs.org/inherits/-/inherits-1.0.2.tgz"
+          "version": "2.0.1",
+          "from": "inherits@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
         }
       }
     },
