@@ -97,36 +97,36 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 2. Select node version
 call :SelectNodeVersion
 
-:: 3. Install npm packages
-:: IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
-::   echo start npm install --only=dev
-::   pushd "%DEPLOYMENT_TARGET%"
-:: 	call :ExecuteCmd !NPM_CMD! config set strict-ssl false
-::     call :ExecuteCmd !NPM_CMD! install --only=dev
-:: 	call :ExecuteCmd !NPM_CMD! config set strict-ssl true
-:: 	IF !ERRORLEVEL! NEQ 0 goto error
-::   popd
-::   echo end npm install --only=dev
-:: )
+3. Install npm packages
+IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  echo start npm install --only=dev
+  pushd "%DEPLOYMENT_TARGET%"
+	call :ExecuteCmd !NPM_CMD! config set strict-ssl false
+    call :ExecuteCmd !NPM_CMD! install --only=dev
+	call :ExecuteCmd !NPM_CMD! config set strict-ssl true
+	IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+  echo end npm install --only=dev
+)
 
-:: IF EXIST "%DEPLOYMENT_TARGET%\bower.json" (
-::   echo start bower install
-::   pushd "%DEPLOYMENT_TARGET%"
-::     call :ExecuteCmd bower install
-::     IF !ERRORLEVEL! NEQ 0 goto error
-::   popd
-::   echo end bower install
-:: )
+IF EXIST "%DEPLOYMENT_TARGET%\bower.json" (
+  echo start bower install
+  pushd "%DEPLOYMENT_TARGET%"
+    call :ExecuteCmd bower install
+    IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+  echo end bower install
+)
 
-:: IF EXIST "%DEPLOYMENT_TARGET%\Gruntfile.js" (
-::   echo start grunt build
-::   pushd "%DEPLOYMENT_TARGET%"
-::     call :ExecuteCmd !NPM_CMD! install grunt-cli --save-dev
-::     call :ExecuteCmd "!NODE_EXE!" node_modules\grunt-cli\bin\grunt build
-::     IF !ERRORLEVEL! NEQ 0 goto error
-::   popd
-::   echo end grunt build
-:: )
+IF EXIST "%DEPLOYMENT_TARGET%\Gruntfile.js" (
+  echo start grunt build
+  pushd "%DEPLOYMENT_TARGET%"
+    call :ExecuteCmd !NPM_CMD! install grunt-cli --save-dev
+    call :ExecuteCmd "!NODE_EXE!" node_modules\grunt-cli\bin\grunt build
+    IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+  echo end grunt build
+)
 
 IF EXIST "%DEPLOYMENT_TARGET%\dist" (
   echo start npm install --production
