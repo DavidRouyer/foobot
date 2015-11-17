@@ -9,7 +9,6 @@ Experimental dashboard for [Foobot](http://foobot.io/), a IoT device designed to
 - [Git](https://git-scm.com/)
 - [Node.js and NPM](nodejs.org) >= v0.12.0
 - [Bower](bower.io) (`npm install --global bower`)
-- [Ruby](https://www.ruby-lang.org) and then `gem install sass`
 - [Grunt](http://gruntjs.com/) (`npm install --global grunt-cli`)
 
 ### Developing
