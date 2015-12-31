@@ -60,8 +60,8 @@
     "grunt-angular-gettext": "^2.1.11"
   },
   "engines": {
-    "node": "^4.2.3",
-    "npm": "^2.14.7"
+    "node": ">=4.2.3",
+    "npm": ">=2.14.7"
   },
   "scripts": {
     "start": "node server/app.js",
