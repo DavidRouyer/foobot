@@ -103,6 +103,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   pushd "%DEPLOYMENT_TARGET%"
 	call :ExecuteCmd !NPM_CMD! config set strict-ssl false
     call :ExecuteCmd !NPM_CMD! install --only=dev
+	call :ExecuteCmd !NPM_CMD! rebuild node-sass
 	call :ExecuteCmd !NPM_CMD! config set strict-ssl true
 	IF !ERRORLEVEL! NEQ 0 goto error
   popd
