@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.2.0",
-    "grunt": "git://github.com/gruntjs/grunt.git#657d917",
+    "grunt": "git://github.com/gruntjs/grunt.git#c8a5251d44cbe1092c552438ffc075ab1a62a58a",
     "grunt-wiredep": "^2.0.0",
     "grunt-concurrent": "~2.1.0",
     "grunt-contrib-clean": "^0.7.0",
@@ -27,7 +27,7 @@
     "grunt-filerev": "^2.3.1",
     "grunt-usemin": "^3.1.1",
     "grunt-env": "~0.4.4",
-    "grunt-angular-templates": "^0.5.9",
+    "grunt-angular-templates": "^1.0.2",
     "grunt-dom-munger": "^3.4.0",
     "grunt-protractor-runner": "^3.0.0",
     "grunt-injector": "^0.6.1",
@@ -50,14 +50,15 @@
     "karma-chrome-launcher": "~0.2.2",
     "requirejs": "~2.1.22",
     "karma-requirejs": "~0.2.2",
-    "karma-phantomjs-launcher": "~0.2.2",
-    "karma": "~0.13.16",
+    "karma-phantomjs-launcher": "~1.0.0",
+    "karma": "~0.13.20",
     "should": "~8.0.2",
     "supertest": "~1.1.0",
     "grunt-contrib-connect": "0.10.1",
     "grunt-connect-proxy": "^0.2.0",
     "connect-modrewrite": "^0.8.2",
-    "grunt-angular-gettext": "^2.1.11"
+    "grunt-angular-gettext": "^2.1.11",
+    "phantomjs-prebuilt": "^2.1.4"
   },
   "engines": {
     "node": ">=4.2.3",
