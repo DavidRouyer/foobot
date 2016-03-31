@@ -1,34 +1,35 @@
 'use strict';
 
 angular.module('foobotApp')
-  .directive('carbon', function() {
+  .directive('carbon', function () {
     return {
       restrict: 'E',
       scope: {
         data: '='
       },
-      link: function(scope, element) {
+      link: function (scope, element) {
 
-        scope.$watch('data', function(newVals) {
+        scope.$watch('data', function (newVals) {
           return scope.render(newVals);
         }, true);
 
-        scope.render = function(alldatas) {
-          if(alldatas === undefined) return false;
+        scope.render = function (alldatas) {
+          if (alldatas === undefined) return false;
 
           var data = [];
 
           var trueWidth = $('.col-sm-12').width();
-          var maxHeight = 550, minHeight = 200;
-          var trueHeight = trueWidth/2;
+          var maxHeight = 550;
+          var minHeight = 200;
+          var trueHeight = trueWidth / 2;
           if (trueHeight > maxHeight) trueHeight = maxHeight;
           if (trueHeight < minHeight) trueHeight = minHeight;
 
-          var margin = {top: 20, right: 0, bottom: 30, left: 50},
-            width = trueWidth - margin.left - margin.right,
-            height = trueHeight - margin.top - margin.bottom;
+          var margin = { top: 20, right: 0, bottom: 30, left: 50 };
+          var width = trueWidth - margin.left - margin.right;
+          var height = trueHeight - margin.top - margin.bottom;
 
-          for (var i = 0; i < alldatas.length; i ++) {
+          for (var i = 0; i < alldatas.length; i++) {
             data[i] = {};
             data[i].date = moment.unix(alldatas[i][0]).toDate();
             data[i].value = alldatas[i][4];
@@ -50,10 +51,9 @@ angular.module('foobotApp')
               .orient('left');
 
           var area = d3.svg.area()
-              //.interpolate('basis')
-              .x(function(d) { return x(d.date); })
+              .x(function (d) { return x(d.date); })
               .y0(height)
-              .y1(function(d) { return y(d.value); });
+              .y1(function (d) { return y(d.value); });
 
           var svg = d3.select(element[0]).append('svg')
               .attr('width', width + margin.left + margin.right)
@@ -64,12 +64,12 @@ angular.module('foobotApp')
           var grad = svg.append('defs')
             .append('linearGradient')
             .attr({
-              'id' : 'carbon-grad',
-              'x1' : '0%',
-              'x2' : '0%',
-              'y1' : '100%',
-              'y2' : '0%',
-              'gradientUnits': 'userSpaceOnUse'
+              id: 'carbon-grad',
+              x1: '0%',
+              x2: '0%',
+              y1: '100%',
+              y2: '0%',
+              gradientUnits: 'userSpaceOnUse'
             });
 
           grad.append('stop')
@@ -96,9 +96,9 @@ angular.module('foobotApp')
             .attr('offset', '100%')
             .style('stop-color', '#e74c3c');
 
-          x.domain(d3.extent(data, function(d) { return d.date; }));
+          x.domain(d3.extent(data, function (d) { return d.date; }));
+
           y.domain([0, 10000]);
-          //y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
           svg.append('path')
               .datum(data)
@@ -131,9 +131,9 @@ angular.module('foobotApp')
             .style('height', height + 'px')
             .style('bottom', (margin.bottom + 5) + 'px');
 
-          var bisectDate = d3.bisector(function(d) { return d.date; }).left;
+          var bisectDate = d3.bisector(function (d) { return d.date; }).left;
 
-          d3.select('.carbon-area').on('mousemove', function(d, i) {
+          d3.select('.carbon-area').on('mousemove', function (d, i) {
             var mousex = d3.mouse(this)[0];
             var xValue = x.invert(mousex);
 
@@ -141,12 +141,13 @@ angular.module('foobotApp')
 
             var d0 = data[i - 1];
             var d1 = data[i];
+
             // work out which date value is closest to the mouse
             var d = mousex - d0[0] > d1[0] - mousex ? d1 : d0;
 
             var yValue = Math.round(d.value * 100) / 100;
 
-            vertical.style('left', mousex + margin.left + 'px' );
+            vertical.style('left', mousex + margin.left + 'px');
             var tooltipWidth = tooltip.style('width');
             tooltipWidth = tooltipWidth.substr(0, tooltipWidth.length - 2);
             tooltip.style('left', (mousex + margin.left - tooltipWidth / 2) + 'px');

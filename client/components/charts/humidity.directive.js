@@ -1,34 +1,35 @@
 'use strict';
 
 angular.module('foobotApp')
-  .directive('humidity', function() {
+  .directive('humidity', function () {
     return {
       restrict: 'E',
       scope: {
         data: '='
       },
-      link: function(scope, element) {
+      link: function (scope, element) {
 
-        scope.$watch('data', function(newVals) {
+        scope.$watch('data', function (newVals) {
           return scope.render(newVals);
         }, true);
 
-        scope.render = function(alldatas) {
-          if(alldatas === undefined) return false;
+        scope.render = function (alldatas) {
+          if (alldatas === undefined) return false;
 
           var data = [];
 
           var trueWidth = $('.col-sm-12').width();
-          var maxHeight = 550, minHeight = 200;
-          var trueHeight = trueWidth/2;
+          var maxHeight = 550;
+          var minHeight = 200;
+          var trueHeight = trueWidth / 2;
           if (trueHeight > maxHeight) trueHeight = maxHeight;
           if (trueHeight < minHeight) trueHeight = minHeight;
 
-          var margin = {top: 20, right: 0, bottom: 30, left: 40},
-            width = trueWidth - margin.left - margin.right,
-            height = trueHeight - margin.top - margin.bottom;
+          var margin = { top: 20, right: 0, bottom: 30, left: 40 };
+          var width = trueWidth - margin.left - margin.right;
+          var height = trueHeight - margin.top - margin.bottom;
 
-          for (var i = 0; i < alldatas.length; i ++) {
+          for (var i = 0; i < alldatas.length; i++) {
             data[i] = {};
             data[i].date = moment.unix(alldatas[i][0]).toDate();
             data[i].value = alldatas[i][3];
@@ -50,9 +51,9 @@ angular.module('foobotApp')
               .orient('left');
 
           var area = d3.svg.area()
-              .x(function(d) { return x(d.date); })
+              .x(function (d) { return x(d.date); })
               .y0(height)
-              .y1(function(d) { return y(d.value); });
+              .y1(function (d) { return y(d.value); });
 
           var svg = d3.select(element[0]).append('svg')
               .attr('width', width + margin.left + margin.right)
@@ -63,57 +64,57 @@ angular.module('foobotApp')
           var grad = svg.append('defs')
             .append('linearGradient')
             .attr({
-              'id' : 'humidity-grad',
-              'x1' : '0%',
-              'x2' : '0%',
-              'y1' : '100%',
-              'y2' : '0%',
-              'gradientUnits': 'userSpaceOnUse'
+              id: 'humidity-grad',
+              x1: '0%',
+              x2: '0%',
+              y1: '100%',
+              y2: '0%',
+              gradientUnits: 'userSpaceOnUse'
             });
 
-            grad.append('stop')
-              .attr('offset', '0%')
-              .style('stop-color', '#e74c3c');
+          grad.append('stop')
+            .attr('offset', '0%')
+            .style('stop-color', '#e74c3c');
 
-            grad.append('stop')
-              .attr('offset', '46.7%')
-              .style('stop-color', '#e74c3c');
+          grad.append('stop')
+            .attr('offset', '46.7%')
+            .style('stop-color', '#e74c3c');
 
-            grad.append('stop')
-              .attr('offset', '46.7%')
-              .style('stop-color', '#e67e22');
+          grad.append('stop')
+            .attr('offset', '46.7%')
+            .style('stop-color', '#e67e22');
 
-            grad.append('stop')
-              .attr('offset', '55.4%')
-              .style('stop-color', '#e67e22');
+          grad.append('stop')
+            .attr('offset', '55.4%')
+            .style('stop-color', '#e67e22');
 
-            grad.append('stop')
-              .attr('offset', '55.4%')
-              .style('stop-color', '#40d47e');
+          grad.append('stop')
+            .attr('offset', '55.4%')
+            .style('stop-color', '#40d47e');
 
-            grad.append('stop')
-              .attr('offset', '64.4%')
-              .style('stop-color', '#40d47e');
+          grad.append('stop')
+            .attr('offset', '64.4%')
+            .style('stop-color', '#40d47e');
 
-            grad.append('stop')
-              .attr('offset', '64.4%')
-              .style('stop-color', '#e67e22');
+          grad.append('stop')
+            .attr('offset', '64.4%')
+            .style('stop-color', '#e67e22');
 
-            grad.append('stop')
-              .attr('offset', '73.7%')
-              .style('stop-color', '#e67e22');
+          grad.append('stop')
+            .attr('offset', '73.7%')
+            .style('stop-color', '#e67e22');
 
-            grad.append('stop')
-              .attr('offset', '73.7%')
-              .style('stop-color', '#e74c3c');
+          grad.append('stop')
+            .attr('offset', '73.7%')
+            .style('stop-color', '#e74c3c');
 
-            grad.append('stop')
-              .attr('offset', '100%')
-              .style('stop-color', '#e74c3c');
+          grad.append('stop')
+            .attr('offset', '100%')
+            .style('stop-color', '#e74c3c');
 
-          x.domain(d3.extent(data, function(d) { return d.date; }));
+          x.domain(d3.extent(data, function (d) { return d.date; }));
+
           y.domain([0, 100]);
-          //y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
           svg.append('path')
               .datum(data)
@@ -146,9 +147,9 @@ angular.module('foobotApp')
             .style('height', height + 'px')
             .style('bottom', (margin.bottom + 5) + 'px');
 
-          var bisectDate = d3.bisector(function(d) { return d.date; }).left;
+          var bisectDate = d3.bisector(function (d) { return d.date; }).left;
 
-          d3.select('.humidity-area').on('mousemove', function(d, i) {
+          d3.select('.humidity-area').on('mousemove', function (d, i) {
             var mousex = d3.mouse(this)[0];
             var xValue = x.invert(mousex);
 
@@ -156,6 +157,7 @@ angular.module('foobotApp')
 
             var d0 = data[i - 1];
             var d1 = data[i];
+
             // work out which date value is closest to the mouse
             var d = mousex - d0[0] > d1[0] - mousex ? d1 : d0;
 

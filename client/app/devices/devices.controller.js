@@ -9,7 +9,7 @@ angular.module('foobotApp')
       sampling: 0
     },
     function (data) {
-      for (var i = 0; i < data.sensors.length; i ++) {
+      for (var i = 0; i < data.sensors.length; i++) {
         if (data.sensors[i] === 'time') {
           $scope[data.sensors[i]] = moment.unix(data.datapoints[0][i]).fromNow();
         } else {
@@ -29,7 +29,7 @@ angular.module('foobotApp')
       end: moment().toISOString(),
       sampling: 0
     },
-    function(data) {
+    function (data) {
       $scope.graphData = data.datapoints;
     },
     function (err) {

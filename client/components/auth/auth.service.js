@@ -3,8 +3,7 @@
 angular.module('foobotApp')
   .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
     var currentUser = {};
-    if($cookieStore.get('token')) {
-      //currentUser = User.get();
+    if ($cookieStore.get('token')) {
       currentUser.name = localStorage.getItem('username');
     }
 
@@ -17,16 +16,16 @@ angular.module('foobotApp')
        * @param  {Function} callback - optional
        * @return {Promise}
        */
-      login: function(user, callback) {
+      login: function (user, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
 
         $http.get('/api/v2/user/' + user.email + '/login/', {
           headers: {
-            'Authorization': 'Basic ' + window.btoa(unescape(encodeURIComponent(user.email + ':' + user.password)))
+            Authorization: 'Basic ' + window.btoa(unescape(encodeURIComponent(user.email + ':' + user.password)))
           }
         }).
-        success(function(data, status, headers) {
+        success(function (data, status, headers) {
           if (!data) {
             deferred.reject({ message: 'Unable to log in.' });
           } else {
@@ -38,7 +37,7 @@ angular.module('foobotApp')
             return cb();
           }
         }).
-        error(function(err) {
+        error(function (err) {
           this.logout();
           deferred.reject(err);
           return cb(err);
@@ -52,7 +51,7 @@ angular.module('foobotApp')
        *
        * @param  {Function}
        */
-      logout: function() {
+      logout: function () {
         $cookieStore.remove('token');
         localStorage.removeItem('username');
         currentUser = {};
@@ -65,19 +64,19 @@ angular.module('foobotApp')
        * @param  {Function} callback - optional
        * @return {Promise}
        */
-      createUser: function(user, callback) {
+      createUser: function (user, callback) {
         var cb = callback || angular.noop;
 
         user.id = user.email;
         return User.create(user,
-          function(data, headers) {
+          function (data, headers) {
             $cookieStore.put('token', headers('X-AUTH-TOKEN'));
             currentUser.name = data.username;
             localStorage.setItem('username', currentUser.name);
             currentUser = data;
             return cb(user);
           },
-          function(err) {
+          function (err) {
             this.logout();
             return cb(err);
           }.bind(this)).$promise;
@@ -91,15 +90,15 @@ angular.module('foobotApp')
        * @param  {Function} callback    - optional
        * @return {Promise}
        */
-      changePassword: function(oldPassword, newPassword, callback) {
+      changePassword: function (oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
 
         return User.changePassword({ id: currentUser.id }, {
           oldPassword: oldPassword,
           newPassword: newPassword
-        }, function(user) {
+        }, function (user) {
           return cb(user);
-        }, function(err) {
+        }, function (err) {
           return cb(err);
         }).$promise;
       },
@@ -109,7 +108,7 @@ angular.module('foobotApp')
        *
        * @return {Object} user
        */
-      getCurrentUser: function() {
+      getCurrentUser: function () {
         return currentUser;
       },
 
@@ -118,21 +117,21 @@ angular.module('foobotApp')
        *
        * @return {Boolean}
        */
-      isLoggedIn: function() {
+      isLoggedIn: function () {
         return currentUser.hasOwnProperty('name');
       },
 
       /**
        * Waits for currentUser to resolve before checking if user is logged in
        */
-      isLoggedInAsync: function(cb) {
-        if(currentUser.hasOwnProperty('$promise')) {
-          currentUser.$promise.then(function() {
+      isLoggedInAsync: function (cb) {
+        if (currentUser.hasOwnProperty('$promise')) {
+          currentUser.$promise.then(function () {
             cb(true);
-          }).catch(function() {
+          }).catch(function () {
             cb(false);
           });
-        } else if(currentUser.hasOwnProperty('name')) {
+        } else if (currentUser.hasOwnProperty('name')) {
           cb(true);
         } else {
           cb(false);
@@ -144,14 +143,14 @@ angular.module('foobotApp')
        *
        * @return {Boolean}
        */
-      isAdmin: function() {
+      isAdmin: function () {
         return currentUser.permission === 'ROLE_ADMIN';
       },
 
       /**
        * Get auth token
        */
-      getToken: function() {
+      getToken: function () {
         return $cookieStore.get('token');
       }
     };

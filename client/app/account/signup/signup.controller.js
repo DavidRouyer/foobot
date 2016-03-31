@@ -5,25 +5,25 @@ angular.module('foobotApp')
     $scope.user = {};
     $scope.errors = {};
 
-    $scope.register = function(form) {
+    $scope.register = function (form) {
       $scope.submitted = true;
 
-      if(form.$valid) {
+      if (form.$valid) {
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function() {
+        .then(function () {
           // Account created, redirect to home
           $location.path('/');
         })
-        .catch( function(err) {
+        .catch(function (err) {
           err = err.data;
           $scope.errors = {};
 
           // Update validity of form fields that match the dbmodel errors
-          angular.forEach(err.errors, function(error, field) {
+          angular.forEach(err.errors, function (error, field) {
             form[field].$setValidity('dbmodel', false);
             $scope.errors[field] = error.message;
           });
