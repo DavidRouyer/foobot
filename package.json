@@ -2,10 +2,10 @@
   "name": "foobot",
   "version": "0.0.1",
   "dependencies": {
-    "compression": "^1.6.1",
+    "compression": "^1.6.2",
     "express": "^4.13.4",
     "morgan": "~1.7.0",
-    "request": "^2.69.0",
+    "request": "^2.72.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
