@@ -464,6 +464,7 @@ module.exports = function (grunt) {
       sass: {
         options: {
           transform: function (filePath) {
+            console.log(filePath);
             filePath = filePath.replace('/client/app/', '');
             filePath = filePath.replace('/client/components/', '../components/');
             return '@import \'' + filePath + '\';';
